@@ -1,17 +1,12 @@
-function checkVideoEnded() {
+function exitOnVideoEnd() {
+  
+  const video = document.querySelector("video");
 
-    const video = document.querySelector('video');
-
-    if (!video) {
-      setTimeout(checkVideoEnded, 1000);
-      return;
-    } 
-
-    video.addEventListener('ended', () => {
-        chrome.runtime.sendMessage({ action: "closeTab" });
-      });
-    
+  if (!video.ended) {
+    setTimeout(exitOnVideoEnd, 1000);
+    return;
   }
-  
- checkVideoEnded();
-  
+
+  chrome.runtime.sendMessage({ action: "videoEnded" });
+}
+exitOnVideoEnd();

@@ -1,22 +1,23 @@
 {
   "manifest_version": 3,
-  "name": "YoutubeAutoclose",
+  "name": "Youtube Autoclose",
   "version": "1.0",
   "description": "Cierra automáticamente las pestañas de youtube cuando el video termina",
   "icons": {
     "96": "images/iconActive.png"
   },
   "permissions": ["tabs", "activeTab", "scripting"],
-  "background": {
-    "service_worker": "background.js"
-  },
   "content_scripts": [
     {
-      "matches": ["*://www.youtube.com/*"],
+      "matches": ["*://*.youtube.com/watch?v="],
       "js": ["content.js"]
     }
   ],
-  "action": {
-    "default_popup": "popup.html"
-  }
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "host_permissions": [
+    "https://www.youtube.com/*"
+  ]
 }
