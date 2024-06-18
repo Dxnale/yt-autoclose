@@ -1,13 +1,22 @@
 {
-    "manifest_version": 3,
-    "name": "YoutubeAutoclose",
-    "version": "1.0",
-    "description": "Cierra automáticamente las pestañas de youtube cuando el video termina",
-    "icons": { "128": "icon.png" },
-    "background": {
-        "service_worker": "background.js"
-    },
-    "permissions": [
-        "tabs"
-    ]
+  "manifest_version": 3,
+  "name": "YoutubeAutoclose",
+  "version": "1.0",
+  "description": "Cierra automáticamente las pestañas de youtube cuando el video termina",
+  "icons": {
+    "96": "images/iconActive.png"
+  },
+  "permissions": ["tabs", "activeTab", "scripting"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
 }
