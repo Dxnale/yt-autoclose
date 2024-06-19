@@ -6,7 +6,7 @@
   "icons": {
     "96": "images/iconActive.png"
   },
-  "permissions": ["tabs", "activeTab", "scripting"],
+  "permissions": ["tabs", "activeTab", "scripting", "storage", "webNavigation"],
   "content_scripts": [
     {
       "matches": ["*://*.youtube.com/watch?v="],
@@ -16,7 +16,12 @@
   "background": {
     "service_worker": "background.js"
   },
-
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "96": "images/iconActive.png"
+    }
+  },
   "host_permissions": [
     "https://www.youtube.com/*"
   ]
